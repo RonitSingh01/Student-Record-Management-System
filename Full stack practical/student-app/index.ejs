@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student CRUD</title>
+</head>
+<body>
+
+<h1>Student CRUD</h1>
+
+<form action="/students" method="POST">
+    <input name="name" placeholder="Name" required>
+    <input name="age" type="number" placeholder="Age" required>
+    <input name="course" placeholder="Course" required>
+    <button>Add</button>
+</form>
+
+<hr>
+
+<ul>
+<% students.forEach(s => { %>
+    <li>
+
+        <form action="/students/<%= s._id %>/update" method="POST" style="display:inline;">
+            <input name="name" value="<%= s.name %>">
+            <input name="age" value="<%= s.age %>">
+            <input name="course" value="<%= s.course %>">
+            <button>Update</button>
+        </form>
+
+        <form action="/students/<%= s._id %>/delete" method="POST" style="display:inline;">
+            <button>Delete</button>
+        </form>
+
+    </li>
+<% }) %>
+</ul>
+
+</body>
+</html>
